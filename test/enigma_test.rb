@@ -1,1 +1,2 @@
-#enigma_test.rb
+require_relative '../test/test_helper'
+require_relative '../lib/enigma'
