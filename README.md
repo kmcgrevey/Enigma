@@ -1,4 +1,4 @@
 # Enigma
 
 simplecov command:
-open coverage/index.html
+`open coverage/index.html`
