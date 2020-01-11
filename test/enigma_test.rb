@@ -24,6 +24,9 @@ def test_it_can_generate_a_missing_key_and_date
 
   assert_equal String, @enigma.key.class
   assert_equal 5, @enigma.key.length
+
+  assert_equal 6, @enigma.date.length
+  assert @enigma.date[2..3].to_i < 13
 end
 
 end
