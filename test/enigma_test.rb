@@ -19,4 +19,11 @@ def test_it_has_attributes
   assert_equal "040895", @enigma.date
 end
 
+def test_it_can_generate_a_missing_key_and_date
+  @enigma.encrypt("hello world")
+
+  assert_equal String, @enigma.key.class
+  assert_equal 5, @enigma.key.length
+end
+
 end
