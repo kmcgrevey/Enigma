@@ -1,9 +1,14 @@
 class Indexer
-  attr_reader :enig_key, :date
+  # attr_reader :enig_key, :date
 
-  def initialize(enig_key, date)
-    @enig_key = enig_key
-    @date = date
+  # def initialize(enig_key, date)
+  #
+  # end
+
+  def generate_shift_index(enig_key, date)
+    # @enig_key = enig_key
+    # @date = date
+    shift_index(key_index(enig_key), offset_index(date))
   end
 
   def key_index(enig_key)
