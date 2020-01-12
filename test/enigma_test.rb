@@ -15,7 +15,7 @@ class EnigmaTest < Minitest::Test
     @enigma.encrypt("hello world", "02715", "040895")
 
     assert_equal "hello world", @enigma.message
-    assert_equal "02715", @enigma.key
+    assert_equal "02715", @enigma.enig_key
     assert_equal "040895", @enigma.date
   end
 
@@ -31,8 +31,8 @@ class EnigmaTest < Minitest::Test
 
     @enigma.encrypt("hello world")
 
-    assert_equal String, @enigma.key.class
-    assert_equal 5, @enigma.key.length
+    assert_equal String, @enigma.enig_key.class
+    assert_equal 5, @enigma.enig_key.length
   end
 
   def test_it_can_create_a_key_index
@@ -51,6 +51,16 @@ class EnigmaTest < Minitest::Test
                 :d => "5"}
 
     assert_equal expected, @enigma.offset_index("040895")
+  end
+
+  def test_it_creates_the_shift_key
+    skip
+    @enigma.encrypt("hello world", "02715", "040895")
+
+
+    expected = { :a => 3, :b => 27, :c => 73, :d => 20 }
+
+    assert_equal expected, @enigma.shift_index
   end
 
 end
