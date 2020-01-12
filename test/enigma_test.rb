@@ -42,4 +42,14 @@ class EnigmaTest < Minitest::Test
     assert_equal "i shall return", @enigma.message
   end
 
+  def test_it_can_return_a_shift_index
+    @enigma.encrypt("hello world", "02715", "040895")
+    expected = { :a => 3,
+                :b => 27,
+                :c => 73,
+                :d => 20 }
+
+    assert_equal expected, @enigma.shift_index
+  end
+
 end

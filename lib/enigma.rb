@@ -1,5 +1,6 @@
 require_relative 'maker'
 require_relative 'shifter'
+require_relative 'indexer'
 
 class Enigma
   include Maker
@@ -9,9 +10,8 @@ class Enigma
     @message = message
     @enig_key = enig_key
     @date = date
-    # @k_i = key_index(enig_key)
-    # @o_i = offset_index(date)
-    # @shift_index = shift_indexer(@k_i, @o_i)
+
+    @shift_index = Indexer.new.generate_shift_index(enig_key, date)
   end
 
 
