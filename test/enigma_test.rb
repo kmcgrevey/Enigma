@@ -42,32 +42,4 @@ class EnigmaTest < Minitest::Test
     assert_equal "i shall return", @enigma.message
   end
 
-  def test_it_can_create_a_key_index
-    expected = { :a => "02",
-                :b => "27",
-                :c => "71",
-                :d => "15"}
-
-    assert_equal expected, @enigma.key_index("02715")
-  end
-
-  def test_it_can_create_an_offset_index
-    expected = { :a => "1",
-                :b => "0",
-                :c => "2",
-                :d => "5"}
-
-    assert_equal expected, @enigma.offset_index("040895")
-  end
-
-  def test_it_creates_the_shift_key
-    @enigma.encrypt("hello world", "02715", "040895")
-    expected = { :a => 3,
-                :b => 27,
-                :c => 73,
-                :d => 20 }
-
-    assert_equal expected, @enigma.shift_index
-  end
-
 end
