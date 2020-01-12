@@ -11,7 +11,7 @@ class Enigma
     @date = date
     @k_i = key_index(enig_key)
     @o_i = offset_index(date)
-    # @shift_index = shift_indexer(@k_i, @o_i)
+    @shift_index = shift_indexer(@k_i, @o_i)
   end
 
   def key_index(enig_key)
@@ -29,9 +29,10 @@ class Enigma
       :d => date_squared[-1],}
   end
 
-  # def shift_indexer(enig_key, offset)
-  #   x = a.merge(b) { |k, o, n| o + n }
-  #   require "pry"; binding.pry
-  # end
+  def shift_indexer(enig_key, offset)
+    enig_key.merge(offset) do |key, enig_key_val, offset_val|
+      enig_key_val.to_i + offset_val.to_i
+    end
+  end
 
 end
