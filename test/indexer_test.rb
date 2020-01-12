@@ -35,4 +35,23 @@ class IndexerTest < Minitest::Test
     assert_equal expected, @indexer.offset_index("040895")
   end
 
+  def test_it_creates_the_shift_key
+    key = {     :a => "02",
+                :b => "27",
+                :c => "71",
+                :d => "15"}
+
+    offset = {  :a => "1",
+                :b => "0",
+                :c => "2",
+                :d => "5"}
+
+    expected = { :a => 3,
+                :b => 27,
+                :c => 73,
+                :d => 20 }
+
+    assert_equal expected, @indexer.shift_index(key, offset)
+  end
+
 end

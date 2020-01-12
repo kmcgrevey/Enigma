@@ -22,4 +22,10 @@ class Indexer
       :d => date_squared[-1],}
   end
 
+  def shift_index(enig_key, offset)
+    enig_key.merge(offset) do |key, enig_key_val, offset_val|
+      enig_key_val.to_i + offset_val.to_i
+    end
+  end
+
 end
