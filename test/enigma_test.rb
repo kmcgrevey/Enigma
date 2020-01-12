@@ -29,10 +29,17 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "071241", @enigma.date
 
-    @enigma.encrypt("hello world")
+    @enigma.encrypt("i shall return")
 
     assert_equal String, @enigma.enig_key.class
     assert_equal 5, @enigma.enig_key.length
+
+    @enigma.stubs(:date).returns("071241")
+    @enigma.stubs(:enig_key).returns("43210")
+
+    assert_equal "071241", @enigma.date
+    assert_equal "43210", @enigma.enig_key
+    assert_equal "i shall return", @enigma.message
   end
 
   def test_it_can_create_a_key_index
