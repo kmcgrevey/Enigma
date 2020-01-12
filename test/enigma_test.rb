@@ -55,7 +55,10 @@ class EnigmaTest < Minitest::Test
 
   def test_it_creates_the_shift_key
     @enigma.encrypt("hello world", "02715", "040895")
-    expected = { :a => 3, :b => 27, :c => 73, :d => 20 }
+    expected = { :a => 3,
+                :b => 27,
+                :c => 73,
+                :d => 20 }
 
     assert_equal expected, @enigma.shift_index
   end
