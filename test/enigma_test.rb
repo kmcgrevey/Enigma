@@ -15,7 +15,7 @@ class EnigmaTest < Minitest::Test
     @enigma.encrypt("hello world", "02715", "040895")
 
     assert_equal "hello world", @enigma.message
-    assert_equal "02715", @enigma.key
+    assert_equal "02715", @enigma.enig_key
     assert_equal "040895", @enigma.date
   end
 
@@ -29,10 +29,27 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "071241", @enigma.date
 
-    @enigma.encrypt("hello world")
+    @enigma.encrypt("i shall return")
 
-    assert_equal String, @enigma.key.class
-    assert_equal 5, @enigma.key.length
+    assert_equal String, @enigma.enig_key.class
+    assert_equal 5, @enigma.enig_key.length
+
+    @enigma.stubs(:date).returns("071241")
+    @enigma.stubs(:enig_key).returns("43210")
+
+    assert_equal "071241", @enigma.date
+    assert_equal "43210", @enigma.enig_key
+    assert_equal "i shall return", @enigma.message
+  end
+
+  def test_it_can_return_a_shift_index
+    @enigma.encrypt("hello world", "02715", "040895")
+    expected = { :a => 3,
+                :b => 27,
+                :c => 73,
+                :d => 20 }
+
+    assert_equal expected, @enigma.shift_index
   end
 
 end
