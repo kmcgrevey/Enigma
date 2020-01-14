@@ -46,9 +46,9 @@ class ShifterTest < Minitest::Test
     shift_index = {:a=>3, :b=>27, :c=>73, :d=>20}
 
     expected = {:a=>["k", "r", "u"],
-      :b=>["e", " ", "l"],
-      :c=>["d", "o", "w"],
-      :d=>["e", "h"]}
+                :b=>["e", " ", "l"],
+                :c=>["d", "o", "w"],
+                :d=>["e", "h"]}
 
     assert_equal expected, @shifter.rotate_message(indexed_msg, shift_index)
   end
@@ -59,6 +59,11 @@ class ShifterTest < Minitest::Test
     assert_equal "a", @shifter.rotate_letter("c", -2)
   end
 
+  def test_it_can_retain_special_characters
+    assert_equal "!", @shifter.rotate_letter("!", 4)
+    assert_equal ",", @shifter.rotate_letter(",", 23)
+    assert_equal ".", @shifter.rotate_letter(".", -72)
+  end
 
 
 end

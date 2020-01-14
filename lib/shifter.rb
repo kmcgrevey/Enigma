@@ -3,6 +3,7 @@ class Shifter
   def create_shift(message, shift_index)
     sliced_msg = message_slicer(message)
     indexed_msg = message_indexer(sliced_msg)
+    rotated_msg = rotate_message(indexed_msg, shift_index)
 
   end
 
@@ -32,6 +33,7 @@ class Shifter
 
   def rotate_letter(letter, shift)
     alphabet = ("a".."z").to_a << " "
+    return letter if alphabet.include?(letter) == false
     cypherbet = alphabet.rotate(shift)
     cypherbet[alphabet.index(letter)]
   end
