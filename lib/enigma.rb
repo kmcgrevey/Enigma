@@ -12,6 +12,7 @@ class Enigma
     @date = date
 
     @shift_index = Indexer.new.generate_shift_index(enig_key, date)
+    @encrypt_msg = Shifter.new.create_shift(message, @shift_index)
   end
 
 
