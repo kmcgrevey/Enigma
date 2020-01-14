@@ -43,19 +43,20 @@ class ShifterTest < Minitest::Test
                   :c=>["l", "w", "d"],
                   :d=>["l", "o"]}
 
-    # shift_index = {:a=>"W", :b=>"X", :c=>"Y", :d=>"Z"}
     shift_index = {:a=>3, :b=>27, :c=>73, :d=>20}
 
-    # expected = {:a=>["hW", "oW", "rW"],
-    #             :b=>["eX", " X", "lX"],
-    #             :c=>["lY", "wY", "dY"],
-    #             :d=>["lZ", "oZ"]}
     expected = {:a=>["k", "r", "u"],
       :b=>["e", " ", "l"],
       :c=>["d", "o", "w"],
       :d=>["e", "h"]}
 
     assert_equal expected, @shifter.rotate_message(indexed_msg, shift_index)
+  end
+
+  def test_it_can_rotate_a_letter
+    assert_equal "e", @shifter.rotate_letter("a", 4)
+    assert_equal " ", @shifter.rotate_letter("z", 1)
+    assert_equal "a", @shifter.rotate_letter("c", -2)
   end
 
 

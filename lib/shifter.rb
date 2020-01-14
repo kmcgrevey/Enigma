@@ -23,7 +23,6 @@ class Shifter
   def rotate_message(indexed_msg, shift_index)
     rotated = {}
     indexed_msg.reduce({}) do |acc, (key,group)|
-      # rotated[key] = group.map { |letter| letter + shift_index[key] }
       rotated[key] = group.map do |letter|
         rotate_letter(letter, shift_index[key])
       end
