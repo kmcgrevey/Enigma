@@ -5,20 +5,11 @@ require_relative '../lib/indexer'
 class IndexerTest < Minitest::Test
 
   def setup
-    # @indexer = Indexer.new("02715", "040895")
     @indexer = Indexer.new
   end
 
   def test_it_exists
     assert_instance_of Indexer, @indexer
-  end
-
-  def test_it_can_read_arguments
-skip
-    @indexer.generate_shift_index("02715", "040895")
-
-    assert_equal "02715", @indexer.enig_key
-    assert_equal "040895", @indexer.date
   end
 
   def test_it_can_create_a_key_index
