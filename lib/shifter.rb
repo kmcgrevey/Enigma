@@ -1,7 +1,5 @@
 class Shifter
 
-  @alphabet = ("a".."z").to_a << " "
-
   def create_shift(message, shift_index)
     sliced_msg = message_slicer(message)
     indexed_msg = message_indexer(sliced_msg)
@@ -25,9 +23,18 @@ class Shifter
   def rotate_message(indexed_msg, shift_index)
     rotated = {}
     indexed_msg.reduce({}) do |acc, (key,group)|
-      rotated[key] = group.map { |letter| letter + shift_index[key] }
+      # rotated[key] = group.map { |letter| letter + shift_index[key] }
+      rotated[key] = group.map do |letter|
+        rotate_letter(letter, shift_index[key])
+      end
       rotated
     end
+  end
+
+  def rotate_letter(letter, shift)
+    alphabet = ("a".."z").to_a << " "
+    cypherbet = alphabet.rotate(shift)
+    cypherbet[alphabet.index(letter)]
   end
 
 end

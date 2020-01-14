@@ -42,17 +42,18 @@ class ShifterTest < Minitest::Test
                   :b=>["e", " ", "l"],
                   :c=>["l", "w", "d"],
                   :d=>["l", "o"]}
-    # expected = {:a=>["k", "r", "u"],
-    #             :b=>["e", " ", "l"],
-    #             :c=>["l", "w", "d"],
-    #             :d=>["l", "o"]}
 
-    shift_index = {:a=>"W", :b=>"X", :c=>"Y", :d=>"Z"}
+    # shift_index = {:a=>"W", :b=>"X", :c=>"Y", :d=>"Z"}
+    shift_index = {:a=>3, :b=>27, :c=>73, :d=>20}
 
-    expected = {:a=>["hW", "oW", "rW"],
-                :b=>["eX", " X", "lX"],
-                :c=>["lY", "wY", "dY"],
-                :d=>["lZ", "oZ"]}
+    # expected = {:a=>["hW", "oW", "rW"],
+    #             :b=>["eX", " X", "lX"],
+    #             :c=>["lY", "wY", "dY"],
+    #             :d=>["lZ", "oZ"]}
+    expected = {:a=>["k", "r", "u"],
+      :b=>["e", " ", "l"],
+      :c=>["d", "o", "w"],
+      :d=>["e", "h"]}
 
     assert_equal expected, @shifter.rotate_message(indexed_msg, shift_index)
   end
