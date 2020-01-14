@@ -52,4 +52,12 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.shift_index
   end
 
+  def test_it_returns_coded_message_with_key_and_date
+    expected = { encryption: "keder ohulw",
+                  key: "02715",
+                  date: "040895" }
+
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
 end
