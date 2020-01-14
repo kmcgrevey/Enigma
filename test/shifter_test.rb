@@ -65,5 +65,13 @@ class ShifterTest < Minitest::Test
     assert_equal ".", @shifter.rotate_letter(".", -72)
   end
 
+  def test_it_can_reassemble_message
+    rotated_msg = {:a=>["k", "r", "u"],
+                  :b=>["e", " ", "l"],
+                  :c=>["d", "o", "w"],
+                  :d=>["e", "h"]}
+    assert_equal "keder ohulw", @shifter.reassemble_message(rotated_msg)
+  end
+
 
 end

@@ -4,7 +4,7 @@ class Shifter
     sliced_msg = message_slicer(message)
     indexed_msg = message_indexer(sliced_msg)
     rotated_msg = rotate_message(indexed_msg, shift_index)
-
+    reassemble_message(rotated_msg)
   end
 
   def message_slicer(message)
@@ -33,9 +33,15 @@ class Shifter
 
   def rotate_letter(letter, shift)
     alphabet = ("a".."z").to_a << " "
-    return letter if alphabet.include?(letter) == false
     cypherbet = alphabet.rotate(shift)
+    return letter if alphabet.include?(letter) == false
     cypherbet[alphabet.index(letter)]
+  end
+
+  def reassemble_message(rotated_msg)
+    msg = rotated_msg[:a].zip(rotated_msg[:b], rotated_msg[:c], rotated_msg[:d])
+    msg = msg.flatten.compact
+    msg.join
   end
 
 end
