@@ -13,12 +13,19 @@ class ShifterTest < Minitest::Test
     assert_instance_of Shifter, @shifter
   end
 
-  def test_it_can_chop_up_a_message
-    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+  def test_it_can_slice_up_a_message_into_groups_of_four
 
-    assert_equal expected, @shifter.message_chopper("hello world")
-    assert_equal expected, @shifter.message_chopper("HELLO World")
+    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d"]]
+
+    assert_equal expected, @shifter.message_slicer("hello world")
+    assert_equal expected, @shifter.message_slicer("HELLO World")
   end
+
+  # def test_it_can_slice_up_the_message
+  #   expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d"]]
+  #
+  #   assert_equal
+  # end
 
 
 
