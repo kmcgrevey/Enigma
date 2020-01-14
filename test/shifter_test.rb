@@ -21,11 +21,12 @@ class ShifterTest < Minitest::Test
     assert_equal expected, @shifter.message_slicer("HELLO World")
   end
 
-  # def test_it_can_slice_up_the_message
-  #   expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d"]]
-  #
-  #   assert_equal
-  # end
+  def test_it_can_index_the_message
+    expected = {:a=>["h", "o", "r"], :b=>["e", " ", "l"], :c=>["l", "w", "d"], :d=>["l", "o"]}
+    sliced_msg = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d"]]
+
+    assert_equal expected, @shifter.message_indexer(sliced_msg)
+  end
 
 
 
