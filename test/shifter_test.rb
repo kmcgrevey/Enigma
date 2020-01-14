@@ -37,7 +37,6 @@ class ShifterTest < Minitest::Test
   end
 
   def test_it_can_rotate_the_indexed_message
-# skip
     indexed_msg = {:a=>["h", "o", "r"],
                   :b=>["e", " ", "l"],
                   :c=>["l", "w", "d"],
@@ -73,5 +72,10 @@ class ShifterTest < Minitest::Test
     assert_equal "keder ohulw", @shifter.reassemble_message(rotated_msg)
   end
 
+  def test_it_can_create_an_unshift_index
+    shift_index = {:a=>8, :b=>13, :c=>44, :d=>2}
+    expected = {:a=>-8, :b=>-13, :c=>-44, :d=>-2}
 
+    assert_equal expected, @shifter.unshifter(shift_index)
+  end
 end
