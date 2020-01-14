@@ -1,10 +1,14 @@
 class Shifter
 
-  def create_shift(message, shift_index)
+  def encrypt_shift(message, shift_index)
     sliced_msg = message_slicer(message)
     indexed_msg = message_indexer(sliced_msg)
     rotated_msg = rotate_message(indexed_msg, shift_index)
     reassemble_message(rotated_msg)
+  end
+
+  def decrypt_shift(message, shift_index)
+
   end
 
   def message_slicer(message)
