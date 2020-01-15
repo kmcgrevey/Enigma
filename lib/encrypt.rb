@@ -5,7 +5,6 @@ enigma = Enigma.new
 file = File.open(ARGV[0], "r")
 
 message = file.read.chomp
-
 file.rewind
 
 enigma.encrypt(message)
