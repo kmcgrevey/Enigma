@@ -13,7 +13,6 @@ class IndexerTest < Minitest::Test
   end
 
   def test_it_can_create_a_key_index
-  # skip
     expected = { :a => "02",
                 :b => "27",
                 :c => "71",
@@ -23,7 +22,6 @@ class IndexerTest < Minitest::Test
   end
 
   def test_it_can_create_an_offset_index
-# skip
     expected = { :a => "1",
                 :b => "0",
                 :c => "2",
@@ -33,7 +31,6 @@ class IndexerTest < Minitest::Test
   end
 
   def test_it_creates_the_shift_key
-# skip
     key = {     :a => "02",
                 :b => "27",
                 :c => "71",
@@ -53,7 +50,6 @@ class IndexerTest < Minitest::Test
   end
 
   def test_it_can_generate_the_shift_index
-# skip
     expected = { :a => 3,
                 :b => 27,
                 :c => 73,
