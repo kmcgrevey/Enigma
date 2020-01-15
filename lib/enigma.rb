@@ -4,7 +4,7 @@ require_relative 'indexer'
 
 class Enigma
   include Maker
-  attr_reader :message, :enig_key, :date, :shift_index
+  attr_reader :message, :enig_key, :date, :shift_index, :encrypted, :decrypted
 
   def encrypt(message, enig_key = key_maker, date = date_maker)
     @message = message
@@ -13,18 +13,13 @@ class Enigma
 
     @shift_index = Indexer.new.generate_shift_index(enig_key, date)
     encrypt_msg = Shifter.new.encrypt_shift(message, @shift_index)
-    { encryption: encrypt_msg, key: enig_key, date: date }
+    @encrypted = { encryption: encrypt_msg, key: enig_key, date: date }
   end
 
   def decrypt(message, enig_key, date)
     shift_index = Indexer.new.generate_shift_index(enig_key, date)
     decrypt_msg = Shifter.new.decrypt_shift(message, shift_index)
-    { decryption: decrypt_msg, key: enig_key, date: date }
+    @decrypted = { decryption: decrypt_msg, key: enig_key, date: date }
   end
-
-
-
-
-
 
 end
