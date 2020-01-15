@@ -5,13 +5,15 @@ enigma = Enigma.new
 file = File.open(ARGV[0], "r")
 
 message = file.read.chomp
+
 file.rewind
 
-# coded_msg = File.open(ARGV[1], "w")
-
-# enigma.encrypt(message, "02715", "040895")
 enigma.encrypt(message)
 
+puts ""
+puts "Created '#{ARGV[1]}' with the key #{enigma.encrypted[:key]} and date #{enigma.encrypted[:date]}"
+puts ""
 
-
-# require "pry"; binding.pry
+message = File.open(ARGV[1], "w")
+message.write(enigma.encrypted[:encryption])
+message.close

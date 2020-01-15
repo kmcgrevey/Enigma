@@ -4,7 +4,7 @@ require_relative 'indexer'
 
 class Enigma
   include Maker
-  attr_reader :message, :enig_key, :date, :shift_index
+  attr_reader :message, :enig_key, :date, :shift_index, :encrypted
 
   def encrypt(message, enig_key = key_maker, date = date_maker)
     @message = message
@@ -12,10 +12,8 @@ class Enigma
     @date = date
 
     @shift_index = Indexer.new.generate_shift_index(enig_key, date)
-    @encrypt_msg = Shifter.new.encrypt_shift(message, @shift_index)
-    encrypted_data = { encryption: @encrypt_msg, key: enig_key, date: date }
-
-    generate_output
+    encrypt_msg = Shifter.new.encrypt_shift(message, @shift_index)
+    @encrypted = { encryption: encrypt_msg, key: enig_key, date: date }
   end
 
   def decrypt(message, enig_key, date)
@@ -29,18 +27,5 @@ class Enigma
     message.close
 
   end
-
-  def generate_output
-    puts "Created '#{ARGV[1]}' with the key #{enig_key} and date #{date}"
-
-    message = File.open(ARGV[1], "w")
-    message.write(@encrypt_msg)
-    message.close
-  end
-
-
-
-
-
 
 end
