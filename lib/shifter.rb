@@ -13,8 +13,6 @@ class Shifter
     indexed_msg = message_indexer(sliced_msg)
     rotated_msg = rotate_message(indexed_msg, unshift_index)
     reassemble_message(rotated_msg)
-
-    # require "pry"; binding.pry
   end
 
   def message_slicer(message)
