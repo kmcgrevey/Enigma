@@ -22,6 +22,12 @@ class Enigma
     shift_index = Indexer.new.generate_shift_index(enig_key, date)
     decrypt_msg = Shifter.new.decrypt_shift(message, shift_index)
     { decryption: decrypt_msg, key: enig_key, date: date }
+
+    puts "Created '#{ARGV[1]}' with the key #{enig_key} and date #{date}"
+    message = File.open(ARGV[1], "w")
+    message.write(decrypt_msg)
+    message.close
+
   end
 
   def generate_output
