@@ -13,7 +13,9 @@ class Enigma
 
     @shift_index = Indexer.new.generate_shift_index(enig_key, date)
     encrypt_msg = Shifter.new.encrypt_shift(message, @shift_index)
-    { encryption: encrypt_msg, key: enig_key, date: date }
+    encrypted_data = { encryption: encrypt_msg, key: enig_key, date: date }
+
+    puts "Created #{ARGV[1]} with the key #{enig_key} and date #{date}"
   end
 
   def decrypt(message, enig_key, date)
