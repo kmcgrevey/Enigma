@@ -6,7 +6,6 @@ class ShifterTest < Minitest::Test
 
   def setup
     @shifter = Shifter.new
-    # Enigma.new.encrypt("hello world", "02715", "040895")
   end
 
   def test_it_exists
@@ -15,39 +14,49 @@ class ShifterTest < Minitest::Test
 
   def test_it_can_slice_up_a_message_into_groups_of_four
 
-    expected = [["h", "e", "l", "l"],
+    expected = [
+                ["h", "e", "l", "l"],
                 ["o", " ", "w", "o"],
-                ["r", "l", "d"]]
+                ["r", "l", "d"]
+               ]
 
     assert_equal expected, @shifter.message_slicer("hello world")
     assert_equal expected, @shifter.message_slicer("HELLO World")
   end
 
   def test_it_can_index_the_message
-    sliced_msg = [["h", "e", "l", "l"],
+    sliced_msg = [
+                  ["h", "e", "l", "l"],
                   ["o", " ", "w", "o"],
-                  ["r", "l", "d"]]
+                  ["r", "l", "d"]
+                ]
 
-    expected = {:a=>["h", "o", "r"],
+    expected = {
+                :a=>["h", "o", "r"],
                 :b=>["e", " ", "l"],
                 :c=>["l", "w", "d"],
-                :d=>["l", "o"]}
+                :d=>["l", "o"]
+              }
 
     assert_equal expected, @shifter.message_indexer(sliced_msg)
   end
 
   def test_it_can_rotate_the_indexed_message
-    indexed_msg = {:a=>["h", "o", "r"],
-                  :b=>["e", " ", "l"],
-                  :c=>["l", "w", "d"],
-                  :d=>["l", "o"]}
+    indexed_msg = {
+                    :a=>["h", "o", "r"],
+                    :b=>["e", " ", "l"],
+                    :c=>["l", "w", "d"],
+                    :d=>["l", "o"]
+                  }
 
     shift_index = {:a=>3, :b=>27, :c=>73, :d=>20}
 
-    expected = {:a=>["k", "r", "u"],
+    expected = {
+                :a=>["k", "r", "u"],
                 :b=>["e", " ", "l"],
                 :c=>["d", "o", "w"],
-                :d=>["e", "h"]}
+                :d=>["e", "h"]
+               }
 
     assert_equal expected, @shifter.rotate_message(indexed_msg, shift_index)
   end
@@ -65,10 +74,12 @@ class ShifterTest < Minitest::Test
   end
 
   def test_it_can_reassemble_message
-    rotated_msg = {:a=>["k", "r", "u"],
+    rotated_msg = {
+                  :a=>["k", "r", "u"],
                   :b=>["e", " ", "l"],
                   :c=>["d", "o", "w"],
-                  :d=>["e", "h"]}
+                  :d=>["e", "h"]
+                  }
     assert_equal "keder ohulw", @shifter.reassemble_message(rotated_msg)
   end
 
