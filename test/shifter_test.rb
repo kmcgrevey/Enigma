@@ -6,7 +6,7 @@ class ShifterTest < Minitest::Test
 
   def setup
     @shifter = Shifter.new
-    Enigma.new.encrypt("hello world", "02715", "040895")
+    # Enigma.new.encrypt("hello world", "02715", "040895")
   end
 
   def test_it_exists
