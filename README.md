@@ -4,13 +4,14 @@ simplecov command:
 * `open coverage/index.html`
 
 to encrypt a message:
+* format: `<runner_file.rb> <read_file> <write_file> <key> <date>`
 * `ruby ./lib/encrypt.rb message.txt encrypted.txt`
-* format: `<runner_file.rb> <read_file> <write_file>`
+* **_note:_** `key` and `date` will be generated if no default given
 
 to decrypt a message:
-* `ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818`
 * format: `<runner_file.rb> <read_file> <write_file> <key> <date>`
-* _NOTE:_ `key` and `date` subject to change if no default given
+* `ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818`
+* **_note:_** `key` and `date` must match `encrypt` codes
 
 ### Self-Evaluation
 **Functionality:** 3
