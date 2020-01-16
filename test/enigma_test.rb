@@ -33,11 +33,17 @@ class EnigmaTest < Minitest::Test
   def test_it_can_generate_a_missing_date
     @enigma.encrypt("hello world", "02715")
 
-    assert_equal 6, @enigma.encrypted[:date].length
-    assert @enigma.encrypted[:date][2..3].to_i < 13
+    # assert_equal 6, @enigma.encrypted[:date].length
+    # assert @enigma.encrypted[:date][2..3].to_i < 13
+    #
+    # day = @enigma.encrypted[:date][0..1].to_i
+    # assert day > 0 && day < 32
+    date = Time.new(2020, 01, 01)
+    # Time.stubs(:now).returns(date)
+    Maker.stubs(:get_todays_date).returns(date)
+    # require "pry"; binding.pry
 
-    day = @enigma.encrypted[:date][0..1].to_i
-    assert day > 0 && day < 32
+    assert_equal "010120", @enigma.encrypted[:date]
   end
 
   def test_it_can_generate_a_missing_key

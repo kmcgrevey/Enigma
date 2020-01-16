@@ -4,8 +4,13 @@ module Maker
     (Array.new(5) { rand(0..9) }).join
   end
 
+  def get_todays_date
+    Time.now
+  end
+
   def date_maker
-    Time.now.strftime("%d%m%y")
+    # require "pry"; binding.pry
+    get_todays_date.strftime("%d%m%y")
   end
 
 end
